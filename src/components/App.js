@@ -1,29 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import { connect } from 'react-redux';
 
-const App = ({ counter, message }) => {
+import { increment, decrement } from '../actions/actions';
+
+const App = ({ counter, message, dispatch }) => {
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Counter: {counter}</h1>
-        <br/>
-        <div>
-          <button className="button is-primary">+1</button> 
-          <button className="button is-danger">+2</button>
-          <button className="button is-info">+3</button>
-        </div>
-        <br/>
-        <div>
-          <button className="button is-success">-1</button>
-          <button className="button is-warning">-2</button>
-          <button className="button is-danger">-3</button>
-        </div>
-      </header>
+    <div>
+      
+      <h1>Counter: {counter}</h1>
+      <br />
+      <div>
+        <button onClick={() => dispatch(increment(1))} className="button is-primary">+1</button>
+        <button onClick={() => dispatch(increment(2))} className="button is-danger">+2</button>
+        <button onClick={() => dispatch(increment(3))} className="button is-info">+3</button>
+      </div>
+      <br />
+      <div>
+        <button onClick={() => dispatch(decrement(1))} className="button is-success">-1</button>
+        <button onClick={() => dispatch(decrement(2))} className="button is-warning">-2</button>
+        <button onClick={() => dispatch(decrement(3))} className="button is-danger">-3</button>
+      </div>
     </div>
   );
 
