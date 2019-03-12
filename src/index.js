@@ -6,10 +6,13 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
 
-import { createStore} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import rootReducer from './reducers';
-const store = createStore(rootReducer);
+
+import logger from 'redux-logger';
+
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 const MyApp = () => (
     <Provider store={store}>
